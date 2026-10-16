@@ -25,7 +25,7 @@ TICKERS = ["WALMEX.MX","GFNORTEO.MX","CEMEXCPO.MX"]
 for t in TICKERS:
     df = yf.download(t, period="1d", interval="1m", progress=False, auto_adjust=True)
     precios = df['Close'].dropna().values
-    precio = float(precios[-1])
+    precio = float(np.array(precios).reshape(-1)[-1])
     pred,val = calcular_f12(precios)
     if pred!="LATERAL":
         enviar_whatsapp(f"{pred} {t} ${precio:.2f} F12:{val:.4f}")

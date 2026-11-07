@@ -1,6 +1,3 @@
-pandas
-numpy
-yfinance
+alpaca-trade-api
 requests
 Flask
-gunicorn
